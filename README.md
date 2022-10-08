@@ -35,7 +35,7 @@ We will also use two other machine learning models, BalanceRandomForestClassifie
 - Combination sampling with SMOTEENN:  
   Balanced Accuracy Score: 0.84  
   Precision: high_risk: 0.03, low_risk: 1.00  
-  Recall: high_risk: 0.83, low_risk: 0.86 
+  Recall: high_risk: 0.83, low_risk: 0.86  
   F1 score: high_risk: 0.06, low_risk: 0.92  
   
   ![Scores 2](Images/deliverable_2_score.png)
@@ -43,15 +43,40 @@ We will also use two other machine learning models, BalanceRandomForestClassifie
 - With BalancedRandomForestClassifier:
   Balanced Accuracy Score: 0.75  
   Precision: high_risk: 0.03, low_risk: 1.00  
-  Recall: high_risk: 0.63, low_risk: 0.88 
-  F1 score: high_risk: 0.06, low_risk: 0.94
+  Recall: high_risk: 0.63, low_risk: 0.88  
+  F1 score: high_risk: 0.06, low_risk: 0.94  
   
   ![Scores 3](Images/deliverable_3_1_score.png)
   
 - With EasyEnsembleClassifier:
   Balanced Accuracy Score: 0.93  
   Precision: high_risk: 0.09, low_risk: 1.00  
-  Recall: high_risk: 0.92, low_risk: 0.94 
-  F1 score: high_risk: 0.16, low_risk: 0.97
+  Recall: high_risk: 0.92, low_risk: 0.94  
+  F1 score: high_risk: 0.16, low_risk: 0.97  
   
   ![Scores 3](Images/deliverable_3_2_score.png)  
+  
+- Imbalanced Classification Reports for each model:  
+  ![Reoprt 1](Images/deliverable_1_report.png)  
+  ![Reoprt 2](Images/deliverable_2_report.png)  
+  ![Reoprt 3](Images/deliverable_3_1_report.png)  
+  ![Reoprt 4](Images/deliverable_3_2_report.png)  
+  
+# Summary
+With this case, because the low risk cases is the majority class, and the goal for this project is to predict the high risk cases, so we will focus on the score for high risk prediction.
+
+When we use the logistic regression model without modifying the sample number, we have great accuracy score of 0.99, but because the imbalanced classes, the recall for high risk prediction is only 0.21, meaning there's a good chance that the model will not successfully predict a high risk applicant. In this credit risk case, we want to be able to find high risk cases, therefore, this algorithm might not be the best fit for this case.
+
+Next is the oversampling with RandomOverSampler algorithm, we got a accuracy score of 0.83, high risk precision is 0.03 which is much lower, F1 score 0.06, but look at the recall score which is 0.82, it is much higher than the previous algorithm, meaning it could have more false positive cases with this algorithm, which isn't perfect but from the business standpoint, we will rather screen out the true positive and false positive and have a closer look with those cases.
+
+SMOTE oversampling, we have accuracy of 0.84, high risk precision is 0.04, F1 score 0.07, recall score 0.82. The result is very close to RandomOverSampler , so we can see those two algorithms resulting the same for this case.
+
+Undersampling with ClusterCentroids, we have accuracy score of 0.82, high risk precision score 0.02, F1 score 0.04, and recall 0.88. From the scores we can also see that thsi will yield higher false positive, even higher than the last two oversampling algorithms. But for the big picture, this result will be in the same category with the two oversampling algorithms.
+
+Combination sampling with SMOTEENN, we have accuracy score of 0.84, high risk precision 0.03, F1 socre 0.06, and recall 0.83. It is also very close to the other resampling methods, which will have higher sensitivity (recall) which will have more false positive cases.
+
+Next we will look at the BalancedRandomForestClassifier algorithm, we have accuracy score of 0.76, high risk precision 0.03, F1 score 0.06 and recall 0.63. With the lower accuracy score, precision and recall, this model will more likely yield more false negative cases, which is the high risk cases but the model predicted as low risk cases. So this model will not be a good choice for this credit risk prediction case.
+
+Last we have EasyEnsembleClassifier, with this model we have accuracy score of 0.93, higher scores for high risk precision (0.09), recall (0.92), and F1 score (0.16). This result looks more promising than the other models. It will most likely have better chances to predict true positive, and better chance to better screen out the false positive, which will be good for this case.
+
+In summary, the EasyEnsembleClassifier will be a better choice for this credict risk case. Higher precision and recall score meaning it has a better chance screen out true and false positive while lower the chance to predict false negative, which will be good for the business since the lower false positive can mean less labor will need to be involved to do more further invesgation.
