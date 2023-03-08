@@ -1,9 +1,9 @@
 # Credit_Risk_Analysis
 
 # Overview of the project:
-The credit risk is an inherently unbalanced classification problem, as good loans easily outnumber risky loans, as the dataset we use in this project. So we will need to use different techniques to train and evalute models with unbalanced classes. In this project, we will use a few different different models including RandomOverSampler, SMOTE, ClusterCentroids, and SMOTEENN algorithms and compare the results.
+Credit risk is an inherently unbalanced classification problem, as good loans easily outnumber risky loans, as the dataset we use in this project. So we will need to use different techniques to train and evaluate models with unbalanced classes. In this project, we will use a few different models including RandomOverSampler, SMOTE, ClusterCentroids, and SMOTEENN algorithms, and compare the results.
 
-We will also use two other machine learning models, BalanceRandomForestClassifier and EasyEnsembleClassifier to reduce bias and predict the credit resk.
+We will also use two other machine learning models, BalanceRandomForestClassifier and EasyEnsembleClassifier to reduce bias and predict the credit risk.
 
 # Results
 - First, I try the logistic regression classifier model without modifying the sample:  
@@ -63,20 +63,20 @@ We will also use two other machine learning models, BalanceRandomForestClassifie
   ![Reoprt 4](Images/deliverable_3_2_report.png)  
   
 # Summary
-With this case, because the low risk cases is the majority class, and the goal for this project is to predict the high risk cases, so we will focus on the score for high risk prediction.
+In this case, because the low-risk cases are the majority class, and the goal of this project is to predict the high-risk cases, so we will focus on the score for high-risk prediction.
 
-When we use the logistic regression model without modifying the sample number, we have great accuracy score of 0.99, but because the imbalanced classes, the recall for high risk prediction is only 0.21, meaning there's a good chance that the model will not successfully predict a high risk applicant. In this credit risk case, we want to be able to find high risk cases, therefore, this algorithm might not be the best fit for this case.
+When we use the logistic regression model without modifying the sample number, we have a great accuracy score of 0.99, but because of the imbalanced classes, the recall for high-risk prediction is only 0.21, meaning there's a good chance that the model will not successfully predict a high-risk applicant. In this credit risk case, we want to be able to find high-risk cases, therefore, this algorithm might not be the best fit for this case.
 
-Next is the oversampling with RandomOverSampler algorithm, we got a accuracy score of 0.83, high risk precision is 0.03 which is much lower, F1 score 0.06, but look at the recall score which is 0.82, it is much higher than the previous algorithm, meaning it could have more false positive cases with this algorithm, which isn't perfect but from the business standpoint, we will rather screen out the true positive and false positive and have a closer look with those cases.
+Next is the oversampling with the RandomOverSampler algorithm, we got an accuracy score of 0.83, high-risk precision is 0.03 which is much lower, F1 score of 0.06, but look at the recall score which is 0.82, it is much higher than the previous algorithm, meaning it could have more false positive cases with this algorithm, which isn't perfect but from the business standpoint, we will rather screen out the true positive and false positive and have a closer look with those cases.
 
-SMOTE oversampling, we have accuracy of 0.84, high risk precision is 0.04, F1 score 0.07, recall score 0.82. The result is very close to RandomOverSampler , so we can see those two algorithms resulting the same for this case.
+SMOTE oversampling, we have an accuracy of 0.84, high-risk precision is 0.04, F1 score of 0.07, and recall score of 0.82. The result is very close to RandomOverSampler, so we can see those two algorithms result in the same for this case.
 
-Undersampling with ClusterCentroids, we have accuracy score of 0.82, high risk precision score 0.02, F1 score 0.04, and recall 0.88. From the scores we can also see that thsi will yield higher false positive, even higher than the last two oversampling algorithms. But for the big picture, this result will be in the same category with the two oversampling algorithms.
+Undersampling with ClusterCentroids, we have an accuracy score of 0.82, a high-risk precision score of 0.02, an F1 score of 0.04, and a recall of 0.88. From the scores, we can also see that this will yield a higher false positive, even higher than the last two oversampling algorithms. But for the big picture, this result will be in the same category as the two oversampling algorithms.
 
-Combination sampling with SMOTEENN, we have accuracy score of 0.84, high risk precision 0.03, F1 socre 0.06, and recall 0.83. It is also very close to the other resampling methods, which will have higher sensitivity (recall) which will have more false positive cases.
+Combining sampling with SMOTEENN, we have an accuracy score of 0.84, high-risk precision of 0.03, F1 score of 0.06, and recall of 0.83. It is also very close to the other resampling methods, which will have higher sensitivity (recall) and will have more false positive cases.
 
-Next we will look at the BalancedRandomForestClassifier algorithm, we have accuracy score of 0.76, high risk precision 0.03, F1 score 0.06 and recall 0.63. With the lower accuracy score, precision and recall, this model will more likely yield more false negative cases, which is the high risk cases but the model predicted as low risk cases. So this model will not be a good choice for this credit risk prediction case.
+Next, we will look at the BalancedRandomForestClassifier algorithm, we have an accuracy score of 0.76, high-risk precision of 0.03, an F1 score of 0.06, and a recall of 0.63. With the lower accuracy score, precision, and recall, this model will more likely yield more false negative cases, which is the high-risk cases but the model predicted as low-risk cases. So this model will not be a good choice for this credit risk prediction case.
 
-Last we have EasyEnsembleClassifier, with this model we have accuracy score of 0.93, higher scores for high risk precision (0.09), recall (0.92), and F1 score (0.16). This result looks more promising than the other models. It will most likely have better chances to predict true positive, and better chance to better screen out the false positive, which will be good for this case.
+Last we have EasyEnsembleClassifier, with this model we have an accuracy score of 0.93, higher scores for high-risk precision (0.09), recall (0.92), and F1 score (0.16). This result looks more promising than the other models. It will most likely have better chances to predict a true positive, and a better chance to better screen out the false positive, which will be good for this case.
 
-In summary, the EasyEnsembleClassifier will be a better choice for this credict risk case. Higher precision and recall score meaning it has a better chance screen out true and false positive while lower the chance to predict false negative, which will be good for the business since the lower false positive can mean less labor will need to be involved to do more further invesgation.
+In summary, the EasyEnsembleClassifier will be a better choice for this credit risk case. Higher precision and recall scores mean it has a better chance to screen out true and false positives while lower the chance to predict false negatives, which will be good for the business since the lower false positives can mean less labor will need to be involved to do more further investigation.
